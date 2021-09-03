@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">I Spy</string>
+    <string name="by_author">By: %s</string>
+    <string name="camera_button">camera button</string>
+</resources>

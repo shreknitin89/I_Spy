@@ -1,0 +1,59 @@
+[
+  {
+    "hint": "First Hint",
+    "createdUser": {
+      "name": "First",
+      "userWins": 0
+    },
+    "latitude": 37.9,
+    "longitude": 100.0,
+    "ratings": [
+      {
+        "userRating": 4.0,
+        "user": {
+          "name": "First",
+          "userWins": 0
+        }
+      }
+    ],
+    "hintWins": 0
+  },
+  {
+    "hint": "First Hint",
+    "createdUser": {
+      "name": "First",
+      "userWins": 0
+    },
+    "latitude": 37.9,
+    "longitude": 100.0,
+    "ratings": [
+      {
+        "userRating": 4.0,
+        "user": {
+          "name": "First",
+          "userWins": 0
+        }
+      }
+    ],
+    "hintWins": 0
+  },
+  {
+    "hint": "First Hint",
+    "createdUser": {
+      "name": "First",
+      "userWins": 0
+    },
+    "latitude": 37.9,
+    "longitude": 100.0,
+    "ratings": [
+      {
+        "userRating": 4.0,
+        "user": {
+          "name": "First",
+          "userWins": 0
+        }
+      }
+    ],
+    "hintWins": 0
+  }
+]
