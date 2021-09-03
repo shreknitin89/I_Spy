@@ -10,14 +10,13 @@ import com.example.ispy.domain.usecase.LaunchCameraUseCase
 import com.example.ispy.domain.usecase.LaunchCameraUseCaseImpl
 import com.example.ispy.domain.usecase.PhotoFileUriGenerator
 import com.example.ispy.domain.usecase.PhotoFileUriGeneratorImpl
-import com.example.ispy.ui.MainActivity
 import com.example.ispy.ui.hints.HintsListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val mainModule = module {
-    viewModel { HintsListViewModel(get()) }
+    viewModel { HintsListViewModel(get(), get(), get()) }
 }
 
 val repoModule = module {
@@ -27,16 +26,16 @@ val repoModule = module {
 }
 
 val useCaseModule = module {
-    single<CameraPermissionsProvider> { (activity: MainActivity) ->
-        CameraPermissionsLauncher(activity)
+    single<CameraPermissionsProvider> {
+        CameraPermissionsLauncher(get())
     }
-    single<CameraLauncherUseCase> { (activity: MainActivity) ->
-        CameraLauncherUseCaseImpl(activity)
+    single<CameraLauncherUseCase> {
+        CameraLauncherUseCaseImpl(get())
     }
-    single<PhotoFileUriGenerator> { (activity: MainActivity) ->
-        PhotoFileUriGeneratorImpl(activity)
+    single<PhotoFileUriGenerator> {
+        PhotoFileUriGeneratorImpl(get())
     }
-    single<LaunchCameraUseCase> { (activity: MainActivity) ->
-        LaunchCameraUseCaseImpl(activity, get(), get(), get())
+    single<LaunchCameraUseCase> {
+        LaunchCameraUseCaseImpl(get(), get(), get(), get())
     }
 }

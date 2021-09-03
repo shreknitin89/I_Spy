@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ispy.databinding.FragmentHintsListBinding
 import com.example.ispy.domain.usecase.CameraResult
-import com.example.ispy.ui.MainActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 /**
  * A simple [Fragment] subclass.
@@ -19,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class HintsListFragment : Fragment() {
 
-    private val hintsViewModel: HintsListViewModel by viewModel()
+    private val hintsViewModel: HintsListViewModel by inject { parametersOf(this.requireActivity()) }
     private var _binding: FragmentHintsListBinding? = null
     private val binding get() = _binding!!
 
@@ -48,7 +48,7 @@ class HintsListFragment : Fragment() {
             when (cameraResult) {
                 is CameraResult.Success -> {
                     val uri = cameraResult.uri
-                    (requireActivity() as MainActivity).route(uri)
+                    hintsViewModel.newHint(uri)
                 }
                 CameraResult.Fail -> {
                     Toast.makeText(context, "Failed to take Picture", Toast.LENGTH_SHORT).show()

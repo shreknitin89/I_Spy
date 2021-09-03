@@ -11,6 +11,12 @@ import com.example.ispy.databinding.FragmentNewHintBinding
 class NewHintFragment : Fragment() {
     private var _binding: FragmentNewHintBinding? = null
     private val binding get() = _binding!!
+    private lateinit var url: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        url = arguments?.getString(DATA) ?: ""
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,13 +27,18 @@ class NewHintFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.photoHint.setImageURI(Uri.parse(url))
+    }
+
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
     }
 
     companion object {
-        const val DATA = "DATA"
+        private const val DATA = "DATA"
         fun newInstance(uri: Uri): NewHintFragment {
             val args = Bundle()
             args.putString(DATA, uri.toString())

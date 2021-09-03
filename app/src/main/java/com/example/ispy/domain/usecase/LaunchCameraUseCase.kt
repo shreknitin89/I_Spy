@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.trySendBlocking
@@ -65,10 +66,10 @@ class LaunchCameraUseCaseImpl(
     }
 
     private fun isDenied(): Boolean {
-        return ContextCompat.checkSelfPermission(
+        return ActivityCompat.shouldShowRequestPermissionRationale(
             activity,
             Manifest.permission.CAMERA
-        ) == PackageManager.PERMISSION_DENIED
+        )
     }
 
     private fun openCamera(): Flow<CameraResult> {
